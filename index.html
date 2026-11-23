@@ -314,15 +314,21 @@
       .home-hero { padding-block: 30px; }
       .home-hero-inner { width: calc(100% - 32px); }
       .home-hero-details { grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: 28px; }
-      .home-hero-intro { font-size: 1rem; text-align: left; line-height: 1.55; }
+      .home-hero-intro { order: -1; font-size: 1rem; text-align: left; line-height: 1.55; }
       .home-hero-focus li { padding: 4px 10px; }
-      .intro-opening { white-space: normal; font-size: inherit; }
+      .intro-opening { display: inline; white-space: normal; font-size: inherit; }
       #app .spa-view > section:not(.home-hero) { padding: 36px 16px; }
       #app .spa-view h1:not(.home-hero-title) { font-size: clamp(2rem, 7.8vw, 3rem); line-height: 1.09; overflow-wrap: break-word; }
       #view-about .grid > div, #view-contact .grid > div { min-width: 0; }
       #view-about .grid:has(#about-profile-img), #view-contact .grid:has(#contact-profile-img) { gap: 28px; }
       #about-profile-img, #contact-profile-img { display: block; }
-      #view-contact .max-w-sm, #view-about .md\:col-span-5 { max-width: 260px; }
+      #view-about .grid > div:has(#about-profile-img) {
+        order: -1;
+        width: min(100%, 260px);
+        justify-self: center;
+      }
+      #view-contact .max-w-sm:has(#contact-profile-img) { max-width: 260px; margin-inline: auto; }
+      #view-contact .contact-arrow { flex: none; color: #0a0a0a; font-weight: 400; }
       .project-tile > div { aspect-ratio: auto; }
       .project-tile > div > img { display: block; height: auto; width: 100%; }
       .project-tile > div > .top-4 { position: static; display: inline-block; margin: 14px 16px 0; }
@@ -625,10 +631,10 @@
         <h2 id="home-recommendations" class="display-font font-bold text-3xl sm:text-5xl mb-8">Beyond the Code</h2><a class="inline-flex items-center gap-2 rounded-full border border-ink px-5 py-2 mb-5 text-sm font-semibold hover:bg-ink hover:text-white transition-colors" href="https://www.linkedin.com/in/geemanthipigera/details/recommendations/" target="_blank" rel="noopener noreferrer">View LinkedIn Recommendations <span aria-hidden="true">↗</span></a><div class="rec-window"><div class="rec-track"><div class="rec-group"><figure class="rec-card"><blockquote>“Geemanthi was a key contributor to the GTN Platform Engineering team.”</blockquote><figcaption><strong>Hibri Marzook</strong>
               <p class="text-sm text-muted">Platform Engineering, DevOps, Cloud Transformation and strategy</p>
               <p class="text-sm text-muted">Geemanthi’s direct manager at GTN · <time datetime="2025-03-06">6 March 2025</time></p>
-            </figcaption><button type="button" data-read="hibri" aria-label="Read full recommendation from Hibri Marzook">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“Beyond her technical expertise, Geemanthi brings strong leadership qualities and a collaborative spirit.”</blockquote><figcaption><strong>Chathura Ekanayake 🇱🇰</strong><p>Senior Project Manager · GTN teammate</p><time datetime="2025-09-29">29 September 2025</time></figcaption><button type="button" data-read="chathura" aria-label="Read full recommendation from Chathura Ekanayake">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“She was instrumental in implementing and optimizing infrastructure as code using Terraform, ensuring that our cloud environments were efficient, secure, and well-governed.”</blockquote><figcaption><strong>Supun Gamage</strong><p>Senior Platform Engineer at GTN Technologies (Pvt) Ltd</p><p>Teammate at GTN · <time datetime="2024-12-08">8 December 2024</time></p></figcaption><button type="button" data-read="supun" aria-label="Read full recommendation from Supun Gamage">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“Beyond technical expertise, Geemanthi was a collaborative team player, always willing to mentor others and share her knowledge.”</blockquote><figcaption><strong>Hirantha Peiris</strong><p>Platform Engineering | DevOps Geek | Cloud Automation | GitHub Campus Expert</p><p>Direct manager at GTN · <time datetime="2024-07-26">26 July 2024</time></p></figcaption><button type="button" data-read="hirantha" aria-label="Read full recommendation from Hirantha Peiris">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“Geemanthi is witty, a quick learner, and a pleasure to work with.”</blockquote><figcaption><strong>Hashini Edirisinghe</strong><p>Platform Engineer</p><p>Teammate at GTN · <time datetime="2024-07-14">14 July 2024</time></p></figcaption><button type="button" data-read="hashini" aria-label="Read full recommendation from Hashini Edirisinghe">Read full recommendation</button></figure></div><div class="rec-group rec-copy" aria-hidden="true"><figure class="rec-card"><blockquote>“Geemanthi was a key contributor to the GTN Platform Engineering team.”</blockquote><figcaption><strong>Hibri Marzook</strong>
+            </figcaption><button type="button" data-read="hibri" aria-label="Read full recommendation from Hibri Marzook">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“Beyond her technical expertise, Geemanthi brings strong leadership qualities and a collaborative spirit.”</blockquote><figcaption><strong>Chathura Ekanayake</strong><p>Senior Project Manager · GTN teammate</p><time datetime="2025-09-29">29 September 2025</time></figcaption><button type="button" data-read="chathura" aria-label="Read full recommendation from Chathura Ekanayake">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“She was instrumental in implementing and optimizing infrastructure as code using Terraform, ensuring that our cloud environments were efficient, secure, and well-governed.”</blockquote><figcaption><strong>Supun Gamage</strong><p>Senior Platform Engineer at GTN Technologies (Pvt) Ltd</p><p>Teammate at GTN · <time datetime="2024-12-08">8 December 2024</time></p></figcaption><button type="button" data-read="supun" aria-label="Read full recommendation from Supun Gamage">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“Beyond technical expertise, Geemanthi was a collaborative team player, always willing to mentor others and share her knowledge.”</blockquote><figcaption><strong>Hirantha Peiris</strong><p>Platform Engineering | DevOps Geek | Cloud Automation | GitHub Campus Expert</p><p>Direct manager at GTN · <time datetime="2024-07-26">26 July 2024</time></p></figcaption><button type="button" data-read="hirantha" aria-label="Read full recommendation from Hirantha Peiris">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“Geemanthi is witty, a quick learner, and a pleasure to work with.”</blockquote><figcaption><strong>Hashini Edirisinghe</strong><p>Platform Engineer</p><p>Teammate at GTN · <time datetime="2024-07-14">14 July 2024</time></p></figcaption><button type="button" data-read="hashini" aria-label="Read full recommendation from Hashini Edirisinghe">Read full recommendation</button></figure></div><div class="rec-group rec-copy" aria-hidden="true"><figure class="rec-card"><blockquote>“Geemanthi was a key contributor to the GTN Platform Engineering team.”</blockquote><figcaption><strong>Hibri Marzook</strong>
               <p class="text-sm text-muted">Platform Engineering, DevOps, Cloud Transformation and strategy</p>
               <p class="text-sm text-muted">Geemanthi’s direct manager at GTN · <time datetime="2025-03-06">6 March 2025</time></p>
-            </figcaption><button tabindex="-1" type="button" data-read="hibri" aria-label="Read full recommendation from Hibri Marzook">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“Beyond her technical expertise, Geemanthi brings strong leadership qualities and a collaborative spirit.”</blockquote><figcaption><strong>Chathura Ekanayake 🇱🇰</strong><p>Senior Project Manager · GTN teammate</p><time datetime="2025-09-29">29 September 2025</time></figcaption><button tabindex="-1" type="button" data-read="chathura" aria-label="Read full recommendation from Chathura Ekanayake">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“She was instrumental in implementing and optimizing infrastructure as code using Terraform, ensuring that our cloud environments were efficient, secure, and well-governed.”</blockquote><figcaption><strong>Supun Gamage</strong><p>Senior Platform Engineer at GTN Technologies (Pvt) Ltd</p><p>Teammate at GTN · <time datetime="2024-12-08">8 December 2024</time></p></figcaption><button tabindex="-1" type="button" data-read="supun" aria-label="Read full recommendation from Supun Gamage">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“Beyond technical expertise, Geemanthi was a collaborative team player, always willing to mentor others and share her knowledge.”</blockquote><figcaption><strong>Hirantha Peiris</strong><p>Platform Engineering | DevOps Geek | Cloud Automation | GitHub Campus Expert</p><p>Direct manager at GTN · <time datetime="2024-07-26">26 July 2024</time></p></figcaption><button tabindex="-1" type="button" data-read="hirantha" aria-label="Read full recommendation from Hirantha Peiris">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“Geemanthi is witty, a quick learner, and a pleasure to work with.”</blockquote><figcaption><strong>Hashini Edirisinghe</strong><p>Platform Engineer</p><p>Teammate at GTN · <time datetime="2024-07-14">14 July 2024</time></p></figcaption><button tabindex="-1" type="button" data-read="hashini" aria-label="Read full recommendation from Hashini Edirisinghe">Read full recommendation</button></figure></div></div></div></section>
+            </figcaption><button tabindex="-1" type="button" data-read="hibri" aria-label="Read full recommendation from Hibri Marzook">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“Beyond her technical expertise, Geemanthi brings strong leadership qualities and a collaborative spirit.”</blockquote><figcaption><strong>Chathura Ekanayake</strong><p>Senior Project Manager · GTN teammate</p><time datetime="2025-09-29">29 September 2025</time></figcaption><button tabindex="-1" type="button" data-read="chathura" aria-label="Read full recommendation from Chathura Ekanayake">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“She was instrumental in implementing and optimizing infrastructure as code using Terraform, ensuring that our cloud environments were efficient, secure, and well-governed.”</blockquote><figcaption><strong>Supun Gamage</strong><p>Senior Platform Engineer at GTN Technologies (Pvt) Ltd</p><p>Teammate at GTN · <time datetime="2024-12-08">8 December 2024</time></p></figcaption><button tabindex="-1" type="button" data-read="supun" aria-label="Read full recommendation from Supun Gamage">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“Beyond technical expertise, Geemanthi was a collaborative team player, always willing to mentor others and share her knowledge.”</blockquote><figcaption><strong>Hirantha Peiris</strong><p>Platform Engineering | DevOps Geek | Cloud Automation | GitHub Campus Expert</p><p>Direct manager at GTN · <time datetime="2024-07-26">26 July 2024</time></p></figcaption><button tabindex="-1" type="button" data-read="hirantha" aria-label="Read full recommendation from Hirantha Peiris">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“Geemanthi is witty, a quick learner, and a pleasure to work with.”</blockquote><figcaption><strong>Hashini Edirisinghe</strong><p>Platform Engineer</p><p>Teammate at GTN · <time datetime="2024-07-14">14 July 2024</time></p></figcaption><button tabindex="-1" type="button" data-read="hashini" aria-label="Read full recommendation from Hashini Edirisinghe">Read full recommendation</button></figure></div></div></div></section>
 
       <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="display-font font-extrabold text-6xl sm:text-7xl text-ink tracking-tight mb-8">
@@ -642,7 +648,7 @@
     <!-- ABOUT VIEW -->
     <div id="view-about" class="spa-view hidden">
       <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="display-font font-extrabold text-4xl sm:text-6xl text-ink tracking-tight mb-12">About me</h1>
+        <h1 class="display-font font-extrabold text-4xl sm:text-6xl text-ink tracking-tight mb-12">About Me</h1>
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20 items-start">
           <div class="md:col-span-7 space-y-6">
@@ -732,7 +738,6 @@
     <!-- PROJECTS VIEW -->
     <div id="view-projects" class="spa-view hidden">
       <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <span class="font-mono text-xs text-muted uppercase tracking-widest block mb-2">02 / Portfolio Archive</span>
         <h1 class="display-font font-extrabold text-4xl sm:text-6xl text-ink tracking-tight mb-8">Personal Projects</h1>
 
         <!-- Category Filters -->
@@ -784,21 +789,21 @@
                   <span class="block font-mono text-xs text-muted uppercase tracking-widest mb-2">Email</span>
                   <span class="display-font font-bold text-xl sm:text-2xl text-ink break-all">pigera.geemanthi@gmail.com</span>
                 </span>
-                <span class="text-2xl text-muted group-hover:text-ink transition-colors" aria-hidden="true">↗</span>
+                <span class="contact-arrow text-2xl text-muted group-hover:text-ink transition-colors" aria-hidden="true">↗</span>
               </a>
               <a href="https://www.linkedin.com/in/geemanthipigera/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-4 py-7 border-b border-hairline hover:pl-2 transition-all">
                 <span>
                   <span class="block font-mono text-xs text-muted uppercase tracking-widest mb-2">LinkedIn</span>
                   <span class="display-font font-bold text-xl sm:text-2xl text-ink">Connect professionally</span>
                 </span>
-                <span class="text-2xl text-muted group-hover:text-ink transition-colors" aria-hidden="true">↗</span>
+                <span class="contact-arrow text-2xl text-muted group-hover:text-ink transition-colors" aria-hidden="true">↗</span>
               </a>
               <a href="https://github.com/geemanthi" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-4 py-7 border-b border-hairline hover:pl-2 transition-all">
                 <span>
                   <span class="block font-mono text-xs text-muted uppercase tracking-widest mb-2">GitHub</span>
                   <span class="display-font font-bold text-xl sm:text-2xl text-ink">Explore my projects</span>
                 </span>
-                <span class="text-2xl text-muted group-hover:text-ink transition-colors" aria-hidden="true">↗</span>
+                <span class="contact-arrow text-2xl text-muted group-hover:text-ink transition-colors" aria-hidden="true">↗</span>
               </a>
             </div>
           </div>
@@ -1111,7 +1116,7 @@
             detailContent.innerHTML = `
               <div class="space-y-8">
                 <a href="#projects" class="font-mono text-xs font-bold uppercase tracking-wider text-muted hover:text-ink transition-colors flex items-center gap-2">
-                  &larr; Back to all works
+                  &larr; Back to All Projects
                 </a>
                 
                 <div>
