@@ -334,8 +334,24 @@
       .project-tile > div > .top-4 { position: static; display: inline-block; margin: 14px 16px 0; }
       .project-tile > div > .bottom-0 { position: static; background: transparent; color: #171613; padding: 12px 16px 18px; }
       .project-tile h3 + p { color: #525252; display: block; }
-      .menu-layout { grid-template-columns: 1fr; grid-template-rows: min(25dvh, 180px) minmax(0, 1fr); }
-      .menu-portrait img { height: 85%; width: auto; }
+      .menu-layout { grid-template-columns: 1fr; grid-template-rows: min(25dvh, 165px) minmax(0, 1fr); }
+      .menu-portrait #menu-photo {
+        z-index: 1;
+        width: min(30vw, 110px);
+        height: 64%;
+        aspect-ratio: auto;
+        object-fit: contain;
+        object-position: center;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        #nav-drawer[open] #menu-photo {
+          animation-name: mobile-menu-photo-zoom-out;
+        }
+        @keyframes mobile-menu-photo-zoom-out {
+          from { transform: scale(1.4); }
+          to { transform: scale(1); }
+        }
+      }
       .menu-panel { padding: 20px 24px max(24px, env(safe-area-inset-bottom)); justify-content: flex-start; gap: 20px; overscroll-behavior: contain; }
       .menu-panel nav { padding-top: 0; gap: 0; }
       .menu-panel nav a, .menu-social a, footer nav a { display: inline-flex; align-items: center; min-height: 44px; }
@@ -348,11 +364,25 @@
     .credential-tile strong { font-size:14px; line-height:1.35; }
     .credential-tile:hover, .credential-tile:focus-visible { border-color:var(--credential-color); background:#eae7e0; }
     @media (max-width:600px) { #certifications-list { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; } }
+    .rec-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+    .rec-controls { display: flex; gap: 8px; margin-inline-start: auto; }
+    .rec-controls button {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid #0a0a0a;
+      border-radius: 50%;
+      font-size: 1.25rem;
+    }
+    .rec-controls button:hover { background: #0a0a0a; color: white; }
+    .rec-controls button:focus-visible { outline: 2px solid #0a0a0a; outline-offset: 3px; }
     .rec-window { overflow:hidden; width:100%; min-width:0; }
     .rec-track,.rec-group { display:flex; width:max-content; }
     .rec-group { gap:1rem; padding-right:1rem; }
     .rec-track { animation:rec-scroll 90s linear infinite; }
     @keyframes rec-scroll { to { transform:translateX(-50%); } }
+    .rec-track.is-paused,
     body:has(.rec-dialog[open]) .rec-track { animation-play-state:paused; }
     .rec-card { width:min(21rem,78vw); padding:16px; border:1px solid #d3cec4; border-radius:14px; font-size:15px; }
     .rec-card figcaption { margin:12px 0 6px; font-size:13px; }
@@ -628,7 +658,15 @@
 
       <!-- LET'S TALK CALL TO ACTION -->
       <section aria-labelledby="home-recommendations" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 id="home-recommendations" class="display-font font-bold text-3xl sm:text-5xl mb-8">Beyond the Code</h2><a class="inline-flex items-center gap-2 rounded-full border border-ink px-5 py-2 mb-5 text-sm font-semibold hover:bg-ink hover:text-white transition-colors" href="https://www.linkedin.com/in/geemanthipigera/details/recommendations/" target="_blank" rel="noopener noreferrer">View LinkedIn Recommendations <span aria-hidden="true">↗</span></a><div class="rec-window"><div class="rec-track"><div class="rec-group"><figure class="rec-card"><blockquote>“Geemanthi was a key contributor to the GTN Platform Engineering team.”</blockquote><figcaption><strong>Hibri Marzook</strong>
+        <h2 id="home-recommendations" class="display-font font-bold text-3xl sm:text-5xl mb-8">Beyond the Code</h2>
+        <div class="rec-toolbar">
+          <a class="inline-flex items-center gap-2 rounded-full border border-ink px-5 py-2 text-sm font-semibold hover:bg-ink hover:text-white transition-colors" href="https://www.linkedin.com/in/geemanthipigera/details/recommendations/" target="_blank" rel="noopener noreferrer">View LinkedIn Recommendations <span aria-hidden="true">↗</span></a>
+          <div class="rec-controls" role="group" aria-label="Recommendation controls">
+            <button type="button" aria-label="Previous recommendation" aria-controls="recommendations-carousel" data-rec-step="-1"><span aria-hidden="true">←</span></button>
+            <button type="button" aria-label="Next recommendation" aria-controls="recommendations-carousel" data-rec-step="1"><span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+        <div id="recommendations-carousel" class="rec-window"><div class="rec-track"><div class="rec-group"><figure class="rec-card"><blockquote>“Geemanthi was a key contributor to the GTN Platform Engineering team.”</blockquote><figcaption><strong>Hibri Marzook</strong>
               <p class="text-sm text-muted">Platform Engineering, DevOps, Cloud Transformation and strategy</p>
               <p class="text-sm text-muted">Geemanthi’s direct manager at GTN · <time datetime="2025-03-06">6 March 2025</time></p>
             </figcaption><button type="button" data-read="hibri" aria-label="Read full recommendation from Hibri Marzook">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“Beyond her technical expertise, Geemanthi brings strong leadership qualities and a collaborative spirit.”</blockquote><figcaption><strong>Chathura Ekanayake</strong><p>Senior Project Manager · GTN teammate</p><time datetime="2025-09-29">29 September 2025</time></figcaption><button type="button" data-read="chathura" aria-label="Read full recommendation from Chathura Ekanayake">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“She was instrumental in implementing and optimizing infrastructure as code using Terraform, ensuring that our cloud environments were efficient, secure, and well-governed.”</blockquote><figcaption><strong>Supun Gamage</strong><p>Senior Platform Engineer at GTN Technologies (Pvt) Ltd</p><p>Teammate at GTN · <time datetime="2024-12-08">8 December 2024</time></p></figcaption><button type="button" data-read="supun" aria-label="Read full recommendation from Supun Gamage">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“Beyond technical expertise, Geemanthi was a collaborative team player, always willing to mentor others and share her knowledge.”</blockquote><figcaption><strong>Hirantha Peiris</strong><p>Platform Engineering | DevOps Geek | Cloud Automation | GitHub Campus Expert</p><p>Direct manager at GTN · <time datetime="2024-07-26">26 July 2024</time></p></figcaption><button type="button" data-read="hirantha" aria-label="Read full recommendation from Hirantha Peiris">Read full recommendation</button></figure><figure class="rec-card"><blockquote>“Geemanthi is witty, a quick learner, and a pleasure to work with.”</blockquote><figcaption><strong>Hashini Edirisinghe</strong><p>Platform Engineer</p><p>Teammate at GTN · <time datetime="2024-07-14">14 July 2024</time></p></figcaption><button type="button" data-read="hashini" aria-label="Read full recommendation from Hashini Edirisinghe">Read full recommendation</button></figure></div><div class="rec-group rec-copy" aria-hidden="true"><figure class="rec-card"><blockquote>“Geemanthi was a key contributor to the GTN Platform Engineering team.”</blockquote><figcaption><strong>Hibri Marzook</strong>
@@ -1260,6 +1298,46 @@
               <p>“Geemanthi was a key contributor to the GTN Platform Engineering team. She built the foundations for centralised governance of the AWS Cloud estate and led the end-to-end delivery of automating the deployment of a transaction monitoring system, including building a resilient and secure AWS infrastructure to run it.</p>
               <p class="mt-4">She showed curiosity and an ability to learn, and she progressed quickly to become a key contributor. Geemanthi was a valued member of the team and I highly recommend working with her.”</p>
             </blockquote></dialog><dialog class="rec-dialog" id="rec-chathura" aria-label="Recommendation from Chathura Ekanayake"><div class="rec-actions"><button type="button" data-close-recommendation>Close ×</button></div><h3>Chathura Ekanayake</h3><blockquote><p>I had the privilege of working with Geemanthi Pigera during my time at GTN, where she served as a Senior Platform Engineer. Geemanthi consistently impressed me with her hard work, discipline, and commitment to excellence. She is highly self-motivated and driven, always taking ownership of her responsibilities and ensuring that projects move forward smoothly.</p><p>Beyond her technical expertise, Geemanthi brings strong leadership qualities and a collaborative spirit. She actively supported me across multiple initiatives during my tenure, making a significant impact on their success. Her ability to lead, inspire, and deliver results makes her a true asset to any organization.</p><p>I highly recommend Geemanthi to any team or company looking for a talented, reliable, and forward-thinking professional.</p></blockquote></dialog><script>
+(() => {
+  const windowEl = document.getElementById('recommendations-carousel');
+  const track = windowEl.querySelector('.rec-track');
+  const group = track.querySelector('.rec-group');
+  const cards = group.children;
+  let resumeTimer;
+
+  document.querySelector('.rec-controls').addEventListener('click', event => {
+    const button = event.target.closest('[data-rec-step]');
+    if (!button) return;
+
+    const direction = Number(button.dataset.recStep);
+    const step = cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left;
+    if (step <= 0) return;
+
+    const animation = track.getAnimations().find(item => item.animationName === 'rec-scroll');
+    if (!animation) {
+      // With reduced motion, use the native scroll position and wrap at either end.
+      const end = windowEl.scrollWidth - windowEl.clientWidth;
+      const current = windowEl.scrollLeft;
+      const target = Math.round(current / step) * step + direction * step;
+      if (direction < 0 && current <= 1) windowEl.scrollLeft = end;
+      else if (direction > 0 && current >= end - 1) windowEl.scrollLeft = 0;
+      else windowEl.scrollLeft = target;
+      return;
+    }
+
+    const duration = animation.effect.getTiming().duration;
+    const progress = (animation.currentTime % duration) / duration;
+    const current = Math.round(progress * group.getBoundingClientRect().width / step);
+    const next = (current + direction + cards.length) % cards.length;
+
+    // Hold the selected card briefly, then resume from its new position.
+    track.classList.add('is-paused');
+    animation.currentTime = duration * next * step / group.getBoundingClientRect().width;
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => track.classList.remove('is-paused'), 3500);
+  });
+})();
+
 document.addEventListener('click', event => {
   const closeButton = event.target.closest('[data-close-recommendation]');
   if (closeButton) {
